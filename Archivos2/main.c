@@ -15,6 +15,7 @@ void funcion3();
 int main()
 {
     //funcion1();
+    //funcion2a();
     //funcion2b();
     funcion3();
 
@@ -24,13 +25,13 @@ int main()
 void funcion1()
 {
     FILE* miArchivo;
-    int numero;// = 64;
-/*
-    miArchivo = fopen("prueba1.txt","w");
+    int numero= 64;
+    /*
+        miArchivo = fopen("prueba1.txt","w");
 
-    fwrite(&numero,sizeof(int),1,miArchivo);
+        fwrite(&numero,sizeof(int),1,miArchivo);
 
-    fclose(miArchivo);*/
+        fclose(miArchivo);*/
 
     miArchivo = fopen("prueba1.txt","r");
 
@@ -62,9 +63,9 @@ void funcion2a()
     i=0;
     while(!feof(miArchivo))
     {
-         fread(&lista[i],sizeof(int),1,miArchivo);
+        fread(&lista[i],sizeof(int),1,miArchivo);
 
-         i++;
+        i++;
     }
 
     fclose(miArchivo);
@@ -83,16 +84,16 @@ void funcion2b()
     int numero;
     int lista[5];//={1,5,9,6,4};
 
-     /*miArchivo = fopen("prueba.txt","w");
+    /*miArchivo = fopen("prueba3.txt","w");
 
 
     fwrite(lista,sizeof(int),5,miArchivo);
 
     fclose(miArchivo);*/
 
-   miArchivo = fopen("prueba.txt","r");
+    miArchivo = fopen("prueba3.txt","r");
 
-      fread(lista,sizeof(int),5,miArchivo);
+    fread(lista,sizeof(int),5,miArchivo);
 
 
     fclose(miArchivo);
@@ -106,37 +107,23 @@ void funcion2b()
 }
 void funcion3()
 {
-    eDato d[2]= {{3,'A'},{4,'C'}};
-    eDato d3;//={1,'d'};
-    eDato d2[2];
     FILE* miArchivo;
+    eDato d;// = {1, 'b'};
 
+    /*miArchivo = fopen("miBinario.dat", "wb");
 
-    miArchivo = fopen("numero.dat", "wb");
+    if(miArchivo!=NULL)
+    {
+        fwrite(&d,sizeof(eDato),1,miArchivo);
+        fclose(miArchivo);
+    }*/
 
-    fwrite(d, sizeof(eDato), 2, miArchivo);
+    miArchivo = fopen("miBinario.dat", "rb");
 
-//fwrite(&d3,sizeof(eDato),1,miArchivo);
-    fclose(miArchivo);
-
-
-miArchivo = fopen("numero.dat","rb");
- fread(d2, sizeof(eDato), 2, miArchivo);
-
-
- for(int i=0; i<2; i++)
-        printf("%d--%c\n", d2[i].a, d2[i].b);
+    if(miArchivo!=NULL)
+    {
+        fread(&d,sizeof(eDato),1,miArchivo);
+        fclose(miArchivo);
+        printf("%d--%c", d.a, d.b);
+    }
 }
-/*
-fread(&d3,sizeof(eDato),1,miArchivo);
-
-printf("%d -- %c", d3.a, d3.b);
-/*
-    miArchivo = fopen("numero.dat", "rb");
-
-
-
-    fclose(miArchivo);
-
-
-}.*/
